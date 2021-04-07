@@ -1,0 +1,26 @@
+.footer {
+  background-color: #141414;
+}
+.footer h2 {
+  line-height: 60px;
+  font-family: "Abril Fatface", cursive;
+  text-align: center;
+  padding-top: 1rem;
+  font-size: 35px;
+  color: #fff;
+}
+.footer li {
+  line-height: auto;
+  margin-left: 1rem;
+  list-style-type: none;
+  color: white;
+}
+.footer li:last-child {
+  padding-bottom: 1rem;
+}
+.footer li a {
+  padding-left: 5px;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}

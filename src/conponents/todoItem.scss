@@ -1,0 +1,30 @@
+.todoItem {
+  margin-bottom: 0.7rem;
+  &__input {
+    display: flex;
+  }
+
+  &__item {
+    margin-bottom: 0.5rem;
+  }
+}
+.todoItem Button {
+  font-size: 12px;
+  width: 60px;
+  border-left: 2px solid #141414;
+}
+
+.item {
+  width: 350px !important;
+}
+.input-group-text {
+  display: block !important;
+  word-wrap: break-word;
+  white-space: normal !important;
+  width: 350px;
+}
+
+.item span {
+  background-color: white;
+  text-align: left !important;
+}

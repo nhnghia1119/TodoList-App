@@ -1,0 +1,9 @@
+.todoform Button {
+  width: 60px;
+  font-size: 12px;
+}
+.todoform {
+  &__edit {
+    margin: 0px 13px 0.7rem 0px;
+  }
+}
