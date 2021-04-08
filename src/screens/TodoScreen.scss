@@ -72,6 +72,10 @@
     }
     &__right {
       grid-row-start: 1;
+      max-width: none;
     }
+  }
+  .todolist__left__scroll {
+    max-width: none;
   }
 }
