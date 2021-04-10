@@ -44,31 +44,23 @@ function TodoForm(props) {
     <div className="todoform">
       {props.edit ? (
         <Form onSubmit={handleSubmit} className="todoform__edit">
-          <InputGroup>
-            <Input
-              type="text"
-              value={value}
-              onChange={HandleChange}
-              ref={valueRef}
-            />
-            <InputGroupAddon addonType="append">
-              <Button>Update</Button>
-            </InputGroupAddon>
-          </InputGroup>
+          <Input
+            placeholder="Nhập Todo"
+            type="text"
+            value={value}
+            onChange={HandleChange}
+            ref={valueRef}
+          />
         </Form>
       ) : (
         <Form onSubmit={handleSubmit}>
-          <InputGroup>
-            <Input
-              type="text"
-              value={value}
-              onChange={HandleChange}
-              ref={valueRef}
-            />
-            <InputGroupAddon addonType="append">
-              <Button>Submit</Button>
-            </InputGroupAddon>
-          </InputGroup>
+          <Input
+            type="text"
+            value={value}
+            onChange={HandleChange}
+            ref={valueRef}
+            placeholder="What needs to be done?"
+          />
         </Form>
       )}
     </div>

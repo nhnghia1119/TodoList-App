@@ -6,7 +6,6 @@ Footer.propTypes = {};
 function Footer(props) {
   return (
     <div className="footer">
-      <h2>Footer</h2>
       <li>
         Source:
         <a target="_blank" href="https://github.com/nhnghia1119/TodoList-App">

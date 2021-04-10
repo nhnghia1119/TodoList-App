@@ -3,7 +3,13 @@
   font-size: 12px;
 }
 .todoform {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   &__edit {
-    margin: 0px 13px 0.7rem 0px;
+    margin: 0px 0px 0.7rem 0px;
   }
+}
+.todoform input {
+  max-width: 100%;
+  min-height: 51px;
 }

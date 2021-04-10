@@ -50,7 +50,6 @@ function TodoScreen(props) {
     dispatch(DeleteTodo(id));
     //delete state
     const newtodoList = todoList.filter((x) => x.id !== id);
-    setActiveTabNew(0); //khi xoa newTodo
     //kiem tra tra ve vi tri
     if (idActive != "4") {
       setActiveTab(idActive);
@@ -97,16 +96,9 @@ function TodoScreen(props) {
   const [activeTab, setActiveTab] = useState("1");
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
-    setActiveTabNew(0);
   };
 
   //set active newtodo
-  const [activeTabNew, setActiveTabNew] = useState(0);
-  const data = (id) => {
-    setActiveTabNew(id);
-    setActiveTab("4");
-  };
-
   //get qty Item
   const qtyItem = (status) => {
     let qty = 0;
@@ -119,91 +111,66 @@ function TodoScreen(props) {
   };
   return (
     <div className="todolist" id="todolist">
-      <div className="todolist__left">
-        <div>
-          <h5>Danh mục(todo list)</h5>
-          <li
-            className={classnames({ active: activeTab == "1" })}
-            onClick={() => {
-              toggle("1");
-            }}
-          >
-            All
-          </li>
-          <li
-            className={classnames({ active: activeTab == "2" })}
-            onClick={() => {
-              toggle("2");
-            }}
-          >
-            Done
-          </li>
-          <li
-            className={classnames({ active: activeTab == "3" })}
-            onClick={() => {
-              toggle("3");
-            }}
-          >
-            Undone
-          </li>
-        </div>
-        <div>
-          <h5>Bài viết mới</h5>
-          <div className="todolist__left__scroll">
-            {todoList.map((x) => (
-              <li
-                className={classnames({ active: activeTab == "4" })}
-                onClick={() => {
-                  data(x);
-                }}
-              >
-                {x.content}
-              </li>
-            ))}
-          </div>
-        </div>
+      <h2 className="todolist__title">To Do List</h2>
+      <div className="todolist__active">
+        <li
+          className={classnames({ activescreen: activeTab == "1" })}
+          onClick={() => {
+            toggle("1");
+          }}
+        >
+          All <span>{activeTab === "1" ? todo.length : ""}</span>
+        </li>
+        <li
+          className={classnames({ activescreen: activeTab == "2" })}
+          onClick={() => {
+            toggle("2");
+          }}
+        >
+          Done <span>{activeTab === "2" ? qtyItem(false) : ""}</span>
+        </li>
+        <li
+          className={classnames({ activescreen: activeTab == "3" })}
+          onClick={() => {
+            toggle("3");
+          }}
+        >
+          Undone <span>{activeTab === "3" ? qtyItem(true) : ""}</span>
+        </li>
+        <li
+          className={classnames({ activescreen: activeTab == "4" })}
+          onClick={() => {
+            toggle("4");
+          }}
+        >
+          News <span>{activeTab === "4" ? todoList.length : ""}</span>
+        </li>
       </div>
-      <div className="todolist__right">
-        <div className="todolist__right__input">
-          <TodoForm onSubmit={HandleTodoFormSubmit}></TodoForm>
-        </div>
-        <div className="todolist__right__item">
-          <p className="todolist__right__item__qty">
-            {activeTab === "1"
-              ? todo.length
-              : activeTab === "2"
-              ? qtyItem(false)
-              : activeTab === "3"
-              ? qtyItem(true)
-              : activeTab == "4"
-              ? "1"
-              : "0"}
-            <span> Item</span>
-          </p>
-          <div className="todolist__right__item__scroll">
-            {activeTabNew != 0 ? (
+      <div className="todolist__input">
+        <TodoForm onSubmit={HandleTodoFormSubmit}></TodoForm>
+      </div>
+      <div className="todolist__item">
+        {activeTab == "4"
+          ? todoList.map((x) => (
               <TodoItem
-                key={activeTabNew.id}
-                todo={activeTabNew}
+                key={x.id}
+                todo={x}
                 activeTab={activeTab}
                 ChangeStatusTodo={ChangeStatusTodo}
                 removeHandler={removeHandler}
                 EditHandler={EditHandler}
               ></TodoItem>
-            ) : (
-              todo.map((x) => (
-                <TodoItem
-                  key={x.id}
-                  todo={x}
-                  activeTab={activeTab}
-                  ChangeStatusTodo={ChangeStatusTodo}
-                  removeHandler={removeHandler}
-                  EditHandler={EditHandler}
-                ></TodoItem>
-              ))
-            )}
-          </div>
-        </div>
+            ))
+          : todo.map((x) => (
+              <TodoItem
+                key={x.id}
+                todo={x}
+                activeTab={activeTab}
+                ChangeStatusTodo={ChangeStatusTodo}
+                removeHandler={removeHandler}
+                EditHandler={EditHandler}
+              ></TodoItem>
+            ))}
       </div>
     </div>
   );

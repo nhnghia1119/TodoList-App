@@ -1,5 +1,8 @@
 #root {
+  margin-top: 100px !important;
+
   margin: 0 auto;
   max-width: 960px;
   box-shadow: 1px 1px 5px #141414;
+  background-color: #f4f4f4;
 }

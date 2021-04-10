@@ -13,7 +13,6 @@ import Footer from "layouts/Footer";
 function App() {
   return (
     <Router className="App">
-      <Header></Header>
       <Navbar></Navbar>
       <main>
         <Switch>

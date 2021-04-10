@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-
-import { Button, InputGroup, InputGroupAddon } from "reactstrap";
+import PropTypes from "prop-types";
 import TodoForm from "./TodoForm";
-
+import { MdDelete } from "react-icons/md";
+import { IoCheckmarkDoneOutline } from "react-icons/io5";
+import classnames from "classnames";
 import "./todoItem.scss";
 
 const TodoItem = (todo) => {
+  console.log("🚀 ---------------------------------------------");
+  console.log("🚀 ~ file: TodoItem.jsx ~ line 10 ~ todo", todo);
+  console.log("🚀 ---------------------------------------------");
   const [edit, setEdit] = useState({ id: null, value: "" });
   const submitUpdate = (value) => {
     todo.EditHandler(edit.id, value, todo.todo.status);
@@ -20,117 +24,121 @@ const TodoItem = (todo) => {
   return (
     <div className="todoItem">
       {todo.activeTab == "4" ? (
-        <InputGroup>
-          <InputGroupAddon
-            className="item"
-            addonType="prepend"
+        <div className="todoItem__child">
+          <div
+            className="todoItem__child__content"
             onDoubleClick={() =>
               setEdit({ id: todo.todo.id, value: todo.todo.content })
             }
           >
-            {todo.todo.content}
-          </InputGroupAddon>
-          <InputGroupAddon addonType="append">
-            <Button onClick={() => todo.ChangeStatusTodo(todo.todo.id)}>
-              {todo.todo.status == true ? (
-                <span>Done</span>
-              ) : (
-                <span>UnDone</span>
-              )}
-            </Button>
-          </InputGroupAddon>
-          <InputGroupAddon addonType="append">
-            <Button
-              onClick={() => todo.removeHandler(todo.todo.id, todo.activeTab)}
+            <div
+              className={classnames({
+                completed_content: todo.todo.status == false,
+              })}
             >
-              Delete
-            </Button>
-          </InputGroupAddon>
-        </InputGroup>
+              {todo.todo.content}
+            </div>
+          </div>
+
+          <div className="todoItem__child__icon">
+            <IoCheckmarkDoneOutline
+              onClick={() => todo.ChangeStatusTodo(todo.todo.id)}
+              className={classnames({
+                completed__button: todo.todo.status == false,
+              })}
+            ></IoCheckmarkDoneOutline>
+            <MdDelete
+              onClick={() => todo.removeHandler(todo.todo.id, todo.activeTab)}
+            ></MdDelete>
+          </div>
+        </div>
       ) : todo.activeTab == "1" ? (
-        <InputGroup>
-          <InputGroupAddon
-            className="item"
-            addonType="prepend"
+        <div className="todoItem__child">
+          <div
+            className="todoItem__child__content"
             onDoubleClick={() =>
               setEdit({ id: todo.todo.id, value: todo.todo.content.content })
             }
           >
-            {todo.todo.content.content}
-          </InputGroupAddon>
-          <InputGroupAddon addonType="append">
-            <Button onClick={() => todo.ChangeStatusTodo(todo.todo.id)}>
-              {todo.todo.status == true ? (
-                <span>Done</span>
-              ) : (
-                <span>UnDone</span>
-              )}
-            </Button>
-          </InputGroupAddon>
-          <InputGroupAddon addonType="append">
-            <Button
-              onClick={() => todo.removeHandler(todo.todo.id, todo.activeTab)}
+            <div
+              className={classnames({
+                completed__content: todo.todo.status == false,
+              })}
             >
-              Delete
-            </Button>
-          </InputGroupAddon>
-        </InputGroup>
+              {todo.todo.content.content}
+            </div>
+          </div>
+
+          <div className="todoItem__child__icon">
+            <IoCheckmarkDoneOutline
+              onClick={() => todo.ChangeStatusTodo(todo.todo.id)}
+              className={classnames({
+                completed__button: todo.todo.status == false,
+              })}
+            ></IoCheckmarkDoneOutline>
+            <MdDelete
+              onClick={() => todo.removeHandler(todo.todo.id, todo.activeTab)}
+            ></MdDelete>
+          </div>
+        </div>
       ) : todo.activeTab == "2" && todo.todo.status === false ? (
-        <InputGroup>
-          <InputGroupAddon
-            className="item"
-            addonType="prepend"
+        <div className="todoItem__child">
+          <div
+            className="todoItem__child__content"
             onDoubleClick={() =>
               setEdit({ id: todo.todo.id, value: todo.todo.content.content })
             }
           >
-            {todo.todo.content.content}
-          </InputGroupAddon>
-          <InputGroupAddon addonType="append">
-            <Button onClick={() => todo.ChangeStatusTodo(todo.todo.id)}>
-              {todo.todo.status == true ? (
-                <span>Done</span>
-              ) : (
-                <span>UnDone</span>
-              )}
-            </Button>
-          </InputGroupAddon>
-          <InputGroupAddon addonType="append">
-            <Button
-              onClick={() => todo.removeHandler(todo.todo.id, todo.activeTab)}
+            <div
+              className={classnames({
+                completed_content: todo.todo.status == false,
+              })}
             >
-              Delete
-            </Button>
-          </InputGroupAddon>
-        </InputGroup>
+              {todo.todo.content.content}
+            </div>
+          </div>
+
+          <div className="todoItem__child__icon">
+            <IoCheckmarkDoneOutline
+              onClick={() => todo.ChangeStatusTodo(todo.todo.id)}
+              className={classnames({
+                completed__button: todo.todo.status == false,
+              })}
+            ></IoCheckmarkDoneOutline>
+            <MdDelete
+              onClick={() => todo.removeHandler(todo.todo.id, todo.activeTab)}
+            ></MdDelete>
+          </div>
+        </div>
       ) : todo.activeTab == "3" && todo.todo.status === true ? (
-        <InputGroup>
-          <InputGroupAddon
-            className="item"
-            addonType="prepend"
+        <div className="todoItem__child">
+          <div
+            className="todoItem__child__content"
             onDoubleClick={() =>
               setEdit({ id: todo.todo.id, value: todo.todo.content.content })
             }
           >
-            {todo.todo.content.content}
-          </InputGroupAddon>
-          <InputGroupAddon addonType="append">
-            <Button onClick={() => todo.ChangeStatusTodo(todo.todo.id)}>
-              {todo.todo.status == true ? (
-                <span>Done</span>
-              ) : (
-                <span>UnDone</span>
-              )}
-            </Button>
-          </InputGroupAddon>
-          <InputGroupAddon addonType="append">
-            <Button
-              onClick={() => todo.removeHandler(todo.todo.id, todo.activeTab)}
+            <div
+              className={classnames({
+                completed_content: todo.todo.status == false,
+              })}
             >
-              Delete
-            </Button>
-          </InputGroupAddon>
-        </InputGroup>
+              {todo.todo.content.content}
+            </div>
+          </div>
+
+          <div className="todoItem__child__icon">
+            <IoCheckmarkDoneOutline
+              onClick={() => todo.ChangeStatusTodo(todo.todo.id)}
+              className={classnames({
+                completed__button: todo.todo.status == false,
+              })}
+            ></IoCheckmarkDoneOutline>
+            <MdDelete
+              onClick={() => todo.removeHandler(todo.todo.id, todo.activeTab)}
+            ></MdDelete>
+          </div>
+        </div>
       ) : (
         ""
       )}
