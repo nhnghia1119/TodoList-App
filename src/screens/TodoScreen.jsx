@@ -51,8 +51,8 @@ function TodoScreen(props) {
     //delete state
     const newtodoList = todoList.filter((x) => x.id !== id);
     //kiem tra tra ve vi tri
-    if (idActive != "4") {
-      setActiveTab(idActive);
+    if (todoList.length - 1 != 0) {
+      setActiveTab("4");
     } else {
       setActiveTab("1"); //khi xoa newTodo
     }

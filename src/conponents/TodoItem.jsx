@@ -7,9 +7,6 @@ import classnames from "classnames";
 import "./todoItem.scss";
 
 const TodoItem = (todo) => {
-  console.log("🚀 ---------------------------------------------");
-  console.log("🚀 ~ file: TodoItem.jsx ~ line 10 ~ todo", todo);
-  console.log("🚀 ---------------------------------------------");
   const [edit, setEdit] = useState({ id: null, value: "" });
   const submitUpdate = (value) => {
     todo.EditHandler(edit.id, value, todo.todo.status);
